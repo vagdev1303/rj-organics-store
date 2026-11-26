@@ -1,7 +1,7 @@
 import { Clock, ExternalLink, MapPin, MessageCircle, Phone } from 'lucide-react';
 
 const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=RJ+Organics+and+Oils+Polyclinic+Rd+opp+Style+union+Acharya+Ranga+Nagar+Vijayawada+Andhra+Pradesh+520010';
+  'https://www.google.com/maps/search/?api=1&query=Pinnamaneni+Polyclinic+Rd+opp+Style+Union+beside+Nalanda+School+Road+Gayatri+Nagar+Vijayawada+Andhra+Pradesh+520008';
 
 export function StoreInfoSection() {
   return (
@@ -13,7 +13,7 @@ export function StoreInfoSection() {
             RJ Organics and Oils — Vijayawada
           </h2>
           <p className="store-intro">
-            Drop by our Vijayawada outlet opp. Style union to taste freshly pressed oils, pick up stone-ground spices and dry fruits, or grab everyday school stationery.
+            Drop by our Gayatri Nagar outlet opp. Style Union (beside Nalanda School Road) to taste freshly pressed oils, pick up stone-ground spices and dry fruits, or grab everyday school stationery.
           </p>
 
           <dl className="store-info-list">
@@ -23,11 +23,11 @@ export function StoreInfoSection() {
                 <span>Store Address</span>
               </dt>
               <dd>
-                Polyclinic Rd, opp. Style union,
+                Pinnamaneni, Polyclinic Rd, opp. Style Union,
                 <br />
-                Acharya Ranga Nagar, Vijayawada,
+                beside Nalanda School Road, Gayatri Nagar,
                 <br />
-                Andhra Pradesh 520010
+                Vijayawada, Andhra Pradesh 520008
               </dd>
             </div>
 
@@ -87,10 +87,11 @@ export function StoreInfoSection() {
           </div>
           <h3>Easy Landmark Directions</h3>
           <p className="landmark-lead">
-            Located directly <strong>opp. Style union</strong> in Acharya Ranga Nagar, Vijayawada.
+            Located on <strong>Pinnamaneni, Polyclinic Rd</strong>, directly{' '}
+            <strong>opp. Style Union</strong> &amp; beside Nalanda School Road in Gayatri Nagar, Vijayawada.
           </p>
           <ul className="landmark-bullets">
-            <li>Convenient two-wheeler &amp; car stopover opp. Style union</li>
+            <li>Convenient two-wheeler &amp; car stopover opp. Style Union, beside Nalanda School Road</li>
             <li>Same-day WhatsApp bag preparation for quick pickup</li>
             <li>Bulk 5L Cans &amp; 15L Tins available for home &amp; function orders</li>
           </ul>

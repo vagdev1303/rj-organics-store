@@ -7,7 +7,7 @@ export function GrandOpeningBanner({ onBrowseClick }) {
         <div className="container ribbon-inner">
           <Sparkles size={15} aria-hidden="true" />
           <span>
-            <strong>Grand Opening</strong> — Now Serving Acharya Ranga Nagar, Polyclinic Rd &amp; Nearby Vijayawada
+            <strong>Grand Opening</strong> — Now Serving Gayatri Nagar, Pinnamaneni Polyclinic Rd &amp; Nearby Vijayawada
           </span>
         </div>
       </div>
@@ -23,7 +23,7 @@ export function GrandOpeningBanner({ onBrowseClick }) {
           </h1>
 
           <p className="hero-lead">
-            From 1L bottles to 15L family tins of pure Groundnut, Sesame &amp; Coconut oil—plus stone-ground Andhra spice powders, coastal dry fruits, and everyday school stationery right <strong>opp. Style union</strong>.
+            From 1L bottles to 15L family tins of pure Groundnut, Sesame &amp; Coconut oil—plus stone-ground Andhra spice powders, coastal dry fruits, and everyday school stationery right <strong>opp. Style Union</strong>, beside Nalanda School Road in Gayatri Nagar.
           </p>
 
           <div className="hero-cta-row">
@@ -58,7 +58,7 @@ export function GrandOpeningBanner({ onBrowseClick }) {
                 <MapPin size={15} aria-hidden="true" />
                 <span>Landmark</span>
               </dt>
-              <dd>opp. Style union</dd>
+              <dd>opp. Style Union</dd>
             </div>
             <div className="meta-chip">
               <dt>
@@ -97,7 +97,7 @@ export function GrandOpeningBanner({ onBrowseClick }) {
             </li>
           </ul>
           <a href="#store-info" className="hero-card-link">
-            See Store Directions →
+            See Gayatri Nagar Directions →
           </a>
         </aside>
       </div>

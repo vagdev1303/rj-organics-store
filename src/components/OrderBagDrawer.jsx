@@ -95,7 +95,7 @@ export function OrderBagDrawer({
 
     const messageLines = [
       '*New Order / Inquiry — RJ Organics & Oils*',
-      'Store: opp. Style union, Acharya Ranga Nagar, Vijayawada',
+      'Store: Pinnamaneni, Polyclinic Rd, opp. Style Union, beside Nalanda School Road, Gayatri Nagar, Vijayawada 520008',
       `Name: ${name}`,
       `Area / Apartment (Vijayawada): ${customerArea}`,
       customerPhone ? `Phone: ${customerPhone}` : null,
@@ -314,7 +314,7 @@ export function OrderBagDrawer({
                     id="customer-area"
                     type="text"
                     required
-                    placeholder="e.g., Acharya Ranga Nagar, Benz Circle, Patamata"
+                    placeholder="e.g., Gayatri Nagar, Benz Circle, Patamata"
                     value={area}
                     onChange={(e) => setArea(e.target.value)}
                   />

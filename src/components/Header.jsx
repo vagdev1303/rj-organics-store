@@ -12,7 +12,7 @@ export function Header({ itemCount, totalAmount, onOpenBag }) {
             <span className="brand-name">RJ Organics &amp; Oils</span>
             <span className="brand-sub">
               <MapPin size={12} aria-hidden="true" />
-              Acharya Ranga Nagar, Vijayawada
+              Gayatri Nagar
             </span>
           </span>
         </a>
