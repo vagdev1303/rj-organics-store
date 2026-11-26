@@ -72,7 +72,7 @@ export function StoreOverview() {
               <span className="dot-gold" aria-hidden="true" />
               <div>
                 <strong>Andhra Spice Powders &amp; Dry Fruits</strong>
-                <p>Guntur Chilli, Nizamabad Turmeric, Palasa Cashews &amp; Almonds</p>
+                <p>Spice Powders, Cashews, Almonds and etc</p>
               </div>
             </li>
             <li>
