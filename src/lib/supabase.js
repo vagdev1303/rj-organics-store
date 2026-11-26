@@ -30,25 +30,25 @@ function normalizeCategory(rawCategory = '') {
   if (value.includes('stationery') || value.includes('school') || value.includes('book')) {
     return 'Stationery';
   }
-  return rawCategory.trim() || 'Oils';
+  return String(rawCategory).trim() || 'Oils';
 }
 
 function normalizeProduct(row, index) {
   return {
     id: row.id ?? `supa-${index}`,
-    name: row.name || row.title || 'Organic Product',
+    name: String(row.name || row.title || 'Organic Product').trim(),
     category: normalizeCategory(row.category),
-    pack_size: row.pack_size || row.variant || row.unit || 'Standard Pack',
-    price: Number(row.price ?? row.price_inr ?? 0),
-    tag: row.tag || row.badge || '',
+    variant: String(row.variant || row.pack_size || row.unit || 'Standard Pack').trim(),
+    price_inr: Number(row.price_inr ?? row.price ?? 0),
     description: row.description || '',
-    image_url: row.image_url || '',
+    tag: row.tag || row.badge || '',
     in_stock: row.in_stock ?? true,
   };
 }
 
 /**
  * Fetch in-stock products from Supabase ordered by category and created_at.
+ * Maps exact columns: id, name, category, variant, price_inr, description.
  * Falls back gracefully to curated sample products if env vars are missing,
  * the table has no rows yet, or the request fails.
  */
@@ -60,16 +60,16 @@ export async function fetchProducts() {
   try {
     let { data, error } = await supabase
       .from('products')
-      .select('*')
+      .select('id, name, category, variant, price_inr, description, in_stock, created_at')
       .eq('in_stock', true)
       .order('category', { ascending: true })
       .order('created_at', { ascending: true });
 
     if (error) {
-      // Retry without created_at in case the table schema omits created_at
+      // Retry without created_at or with wildcard in case optional columns differ
       const fallbackQuery = await supabase
         .from('products')
-        .select('*')
+        .select('id, name, category, variant, price_inr, description, in_stock')
         .eq('in_stock', true)
         .order('category', { ascending: true });
 

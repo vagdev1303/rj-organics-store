@@ -651,6 +651,36 @@ a {
   line-height: 1.45;
 }
 
+.variant-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin-block-start: 0.85rem;
+}
+
+.variant-pill {
+  padding: 0.34rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid var(--cream-300);
+  background: var(--cream-50);
+  color: var(--ink-700);
+  font-size: 0.77rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+}
+
+.variant-pill:hover {
+  background: var(--cream-100);
+  border-color: var(--forest-700);
+}
+
+.variant-pill.is-selected {
+  background: var(--forest-900);
+  border-color: var(--forest-900);
+  color: var(--gold-200);
+}
+
 .product-card-bottom {
   display: flex;
   align-items: center;

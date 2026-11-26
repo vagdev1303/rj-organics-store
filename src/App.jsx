@@ -45,7 +45,7 @@ export default function App() {
   );
 
   const totalAmount = useMemo(
-    () => bagItems.reduce((sum, item) => sum + item.price * item.qty, 0),
+    () => bagItems.reduce((sum, item) => sum + Number(item.price_inr) * item.qty, 0),
     [bagItems]
   );
 

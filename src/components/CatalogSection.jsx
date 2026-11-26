@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import { Minus, Plus, Search, ShoppingBag, Sparkles, X } from 'lucide-react';
 import { CATEGORIES } from '../data/sampleProducts';
 
@@ -7,6 +8,34 @@ const CATEGORY_ACCENTS = {
   'Dry Fruits': { bg: 'badge-dry', icon: '🥜' },
   Stationery: { bg: 'badge-stationery', icon: '📓' },
 };
+
+function groupProductsByNameAndCategory(products) {
+  const groupsMap = new Map();
+
+  for (const row of products) {
+    const cleanName = String(row.name || '').trim();
+    const cleanCategory = String(row.category || '').trim();
+    const groupKey = `${cleanCategory.toLowerCase()}::${cleanName.toLowerCase()}`;
+
+    if (!groupsMap.has(groupKey)) {
+      groupsMap.set(groupKey, {
+        key: groupKey,
+        name: cleanName,
+        category: cleanCategory,
+        variants: [],
+      });
+    }
+
+    groupsMap.get(groupKey).variants.push(row);
+  }
+
+  return Array.from(groupsMap.values()).map((group) => ({
+    ...group,
+    variants: [...group.variants].sort(
+      (a, b) => Number(a.price_inr) - Number(b.price_inr)
+    ),
+  }));
+}
 
 export function CatalogSection({
   products,
@@ -20,23 +49,40 @@ export function CatalogSection({
   onAddToBag,
   onUpdateQty,
 }) {
-  const filteredProducts = products.filter((item) => {
-    const matchesCategory =
-      selectedCategory === 'All' || item.category === selectedCategory;
+  // Tracks selected variant row id per grouped product key
+  const [selectedVariantByGroup, setSelectedVariantByGroup] = useState({});
 
-    if (!matchesCategory) return false;
+  const groupedProducts = useMemo(
+    () => groupProductsByNameAndCategory(products),
+    [products]
+  );
 
+  const filteredGroups = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    if (!q) return true;
 
-    return (
-      item.name.toLowerCase().includes(q) ||
-      item.category.toLowerCase().includes(q) ||
-      item.pack_size.toLowerCase().includes(q) ||
-      (item.description && item.description.toLowerCase().includes(q)) ||
-      (item.tag && item.tag.toLowerCase().includes(q))
-    );
-  });
+    return groupedProducts.filter((group) => {
+      const matchesCategory =
+        selectedCategory === 'All' ||
+        group.category.toLowerCase() === selectedCategory.toLowerCase();
+
+      if (!matchesCategory) return false;
+      if (!q) return true;
+
+      if (
+        group.name.toLowerCase().includes(q) ||
+        group.category.toLowerCase().includes(q)
+      ) {
+        return true;
+      }
+
+      return group.variants.some(
+        (v) =>
+          v.variant.toLowerCase().includes(q) ||
+          (v.description && v.description.toLowerCase().includes(q)) ||
+          (v.tag && v.tag.toLowerCase().includes(q))
+      );
+    });
+  }, [groupedProducts, selectedCategory, searchQuery]);
 
   return (
     <section id="catalog" className="catalog-section" aria-labelledby="catalog-heading">
@@ -111,7 +157,7 @@ export function CatalogSection({
               </div>
             ))}
           </div>
-        ) : filteredProducts.length === 0 ? (
+        ) : filteredGroups.length === 0 ? (
           <div className="empty-state">
             <p className="empty-title">No matching items found</p>
             <p className="empty-text">
@@ -130,56 +176,94 @@ export function CatalogSection({
           </div>
         ) : (
           <div className="product-grid">
-            {filteredProducts.map((product) => {
-              const qty = bagQuantities[product.id] || 0;
-              const accent = CATEGORY_ACCENTS[product.category] || {
+            {filteredGroups.map((group) => {
+              const selectedId = selectedVariantByGroup[group.key];
+              const activeProduct =
+                group.variants.find((v) => v.id === selectedId) ||
+                group.variants[0];
+              const hasMultipleVariants = group.variants.length > 1;
+              const qty = bagQuantities[activeProduct.id] || 0;
+              const accent = CATEGORY_ACCENTS[group.category] || {
                 bg: 'badge-oil',
                 icon: '🌿',
               };
 
               return (
-                <article key={product.id} className="product-card">
+                <article key={group.key} className="product-card">
                   <div className="product-card-top">
                     <div className="product-badges">
                       <span className={`pack-badge ${accent.bg}`}>
                         <span aria-hidden="true">{accent.icon}</span>
-                        <span>{product.pack_size}</span>
+                        <span>{activeProduct.variant}</span>
                       </span>
-                      {product.tag && <span className="tag-badge">{product.tag}</span>}
+                      {activeProduct.tag && (
+                        <span className="tag-badge">{activeProduct.tag}</span>
+                      )}
                     </div>
 
-                    <span className="category-label">{product.category}</span>
-                    <h3 className="product-title">{product.name}</h3>
+                    <span className="category-label">{group.category}</span>
+                    <h3 className="product-title">{group.name}</h3>
 
-                    {product.description && (
-                      <p className="product-desc">{product.description}</p>
+                    {activeProduct.description && (
+                      <p className="product-desc">{activeProduct.description}</p>
+                    )}
+
+                    {hasMultipleVariants && (
+                      <div
+                        className="variant-pills"
+                        role="group"
+                        aria-label={`Select pack size for ${group.name}`}
+                      >
+                        {group.variants.map((variantRow) => {
+                          const isSelected = variantRow.id === activeProduct.id;
+                          return (
+                            <button
+                              key={variantRow.id}
+                              type="button"
+                              aria-pressed={isSelected}
+                              className={`variant-pill ${isSelected ? 'is-selected' : ''}`}
+                              onClick={() =>
+                                setSelectedVariantByGroup((prev) => ({
+                                  ...prev,
+                                  [group.key]: variantRow.id,
+                                }))
+                              }
+                            >
+                              {variantRow.variant}
+                            </button>
+                          );
+                        })}
+                      </div>
                     )}
                   </div>
 
                   <div className="product-card-bottom">
                     <div className="price-block">
                       <span className="price-value">
-                        ₹{Number(product.price).toLocaleString('en-IN')}
+                        ₹{Number(activeProduct.price_inr).toLocaleString('en-IN')}
                       </span>
-                      <span className="price-unit">/ {product.pack_size}</span>
+                      <span className="price-unit">/ {activeProduct.variant}</span>
                     </div>
 
                     {qty === 0 ? (
                       <button
                         type="button"
                         className="btn-add"
-                        onClick={() => onAddToBag(product)}
+                        onClick={() => onAddToBag(activeProduct)}
                       >
                         <ShoppingBag size={16} aria-hidden="true" />
                         <span>Add</span>
                       </button>
                     ) : (
-                      <div className="qty-stepper" aria-label={`Quantity for ${product.name}`}>
+                      <div
+                        className="qty-stepper"
+                        aria-label={`Quantity for ${activeProduct.name} (${activeProduct.variant})`}
+                      >
                         <button
                           type="button"
                           className="qty-btn"
-                          onClick={() => onUpdateQty(product.id, qty - 1)}
-                          aria-label={`Decrease quantity of ${product.name}`}
+                          onClick={() => onUpdateQty(activeProduct.id, qty - 1)}
+                          aria-label={`Decrease quantity of ${activeProduct.name} ${activeProduct.variant}`}
                         >
                           <Minus size={15} aria-hidden="true" />
                         </button>
@@ -187,8 +271,8 @@ export function CatalogSection({
                         <button
                           type="button"
                           className="qty-btn"
-                          onClick={() => onUpdateQty(product.id, qty + 1)}
-                          aria-label={`Increase quantity of ${product.name}`}
+                          onClick={() => onUpdateQty(activeProduct.id, qty + 1)}
+                          aria-label={`Increase quantity of ${activeProduct.name} ${activeProduct.variant}`}
                         >
                           <Plus size={15} aria-hidden="true" />
                         </button>

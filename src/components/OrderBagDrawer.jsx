@@ -88,8 +88,8 @@ export function OrderBagDrawer({
   function buildWhatsAppUrl(name, customerArea, customerPhone, customerNotes) {
     const itemLines = items.map(
       (item, idx) =>
-        `${idx + 1}. ${item.name} (${item.pack_size}) × ${item.qty} = ₹${(
-          item.price * item.qty
+        `${idx + 1}. ${item.name} (${item.variant}) × ${item.qty} = ₹${(
+          Number(item.price_inr) * item.qty
         ).toLocaleString('en-IN')}`
     );
 
@@ -137,8 +137,8 @@ export function OrderBagDrawer({
     const itemsSummary = items
       .map(
         (item) =>
-          `${item.name} (${item.pack_size}) x${item.qty} - ₹${(
-            item.price * item.qty
+          `${item.name} (${item.variant}) x${item.qty} - ₹${(
+            Number(item.price_inr) * item.qty
           ).toLocaleString('en-IN')}`
       )
       .join('; ') + ` | Total: ₹${totalAmount.toLocaleString('en-IN')}`;
@@ -241,7 +241,7 @@ export function OrderBagDrawer({
                     <div className="bag-item-info">
                       <span className="bag-item-name">{item.name}</span>
                       <span className="bag-item-meta">
-                        {item.pack_size} · ₹{item.price.toLocaleString('en-IN')} each
+                        {item.variant} · ₹{Number(item.price_inr).toLocaleString('en-IN')} each
                       </span>
                     </div>
 
@@ -267,7 +267,7 @@ export function OrderBagDrawer({
                       </div>
 
                       <span className="bag-item-subtotal">
-                        ₹{(item.price * item.qty).toLocaleString('en-IN')}
+                        ₹{(Number(item.price_inr) * item.qty).toLocaleString('en-IN')}
                       </span>
 
                       <button
