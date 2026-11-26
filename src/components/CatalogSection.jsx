@@ -89,9 +89,9 @@ export function CatalogSection({
       <div className="container">
         <div className="catalog-header">
           <div>
-            <h2 id="catalog-heading" className="section-title">
+            <h1 id="catalog-heading" className="section-title">
               Store Catalog
-            </h2>
+            </h1>
             <p className="section-subtitle">
               Select items and pack sizes to build your WhatsApp order bag for fast pickup or Vijayawada delivery.
             </p>
