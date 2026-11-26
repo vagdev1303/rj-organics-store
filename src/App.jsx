@@ -3,6 +3,7 @@ import { ShoppingBag } from 'lucide-react';
 import { fetchProducts } from './lib/supabase';
 import { SAMPLE_PRODUCTS } from './data/sampleProducts';
 import { Header } from './components/Header';
+import { StoreOverview } from './components/StoreOverview';
 import { CatalogSection } from './components/CatalogSection';
 import { OrderBagDrawer } from './components/OrderBagDrawer';
 import { StoreInfoSection } from './components/StoreInfoSection';
@@ -88,6 +89,8 @@ export default function App() {
       />
 
       <main>
+        <StoreOverview />
+
         <CatalogSection
           products={products}
           loading={loading}
