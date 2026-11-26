@@ -14,7 +14,7 @@ export function StoreOverview() {
           </h1>
 
           <p className="overview-lead">
-            From 1L bottles to 15L family tins of pure Groundnut, Sesame &amp; Coconut oil—plus stone-ground Andhra spice powders, coastal dry fruits, and everyday school stationery right <strong>opp. Style Union</strong>, beside Nalanda School Road in Gayatri Nagar.
+            From 1L bottles to 15L family tins of pure Groundnut, Sesame &amp; Coconut oil—plus stone-ground Andhra spice powders, coastal dry fruits, and everyday school stationery right <strong>opp. Style Union</strong>.
           </p>
 
           <div className="overview-cta-row">
@@ -38,7 +38,7 @@ export function StoreOverview() {
                 <Clock size={15} aria-hidden="true" />
                 <span>Open Daily</span>
               </dt>
-              <dd>10:00 AM – 9:30 PM</dd>
+              <dd>10:00 AM - 9:30 PM</dd>
             </div>
             <div className="meta-chip">
               <dt>

@@ -1305,6 +1305,10 @@ a {
 }
 
 @media (min-width: 640px) {
+  .overview-meta-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .catalog-controls {
     flex-direction: row;
     align-items: center;
