@@ -23,7 +23,7 @@ export function GrandOpeningBanner({ onBrowseClick }) {
           </h1>
 
           <p className="hero-lead">
-            From 1L bottles to 15L family tins of pure Groundnut, Sesame &amp; Coconut oil—plus stone-ground Andhra spice powders, coastal dry fruits, and everyday school stationery right opposite <strong>Bhashyam Public School</strong>.
+            From 1L bottles to 15L family tins of pure Groundnut, Sesame &amp; Coconut oil—plus stone-ground Andhra spice powders, coastal dry fruits, and everyday school stationery right <strong>opp. Style union</strong>.
           </p>
 
           <div className="hero-cta-row">
@@ -58,7 +58,7 @@ export function GrandOpeningBanner({ onBrowseClick }) {
                 <MapPin size={15} aria-hidden="true" />
                 <span>Landmark</span>
               </dt>
-              <dd>Opp. Bhashyam Public School</dd>
+              <dd>opp. Style union</dd>
             </div>
             <div className="meta-chip">
               <dt>
@@ -92,12 +92,12 @@ export function GrandOpeningBanner({ onBrowseClick }) {
               <span className="dot-gold" aria-hidden="true" />
               <div>
                 <strong>School Stationery Corner</strong>
-                <p>Notebooks, geometry sets &amp; art kits on your school drop-off route</p>
+                <p>Notebooks, geometry sets &amp; art kits for everyday student needs</p>
               </div>
             </li>
           </ul>
           <a href="#store-info" className="hero-card-link">
-            See Polyclinic Rd Directions →
+            See Store Directions →
           </a>
         </aside>
       </div>

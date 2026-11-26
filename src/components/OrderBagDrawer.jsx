@@ -95,6 +95,7 @@ export function OrderBagDrawer({
 
     const messageLines = [
       '*New Order / Inquiry — RJ Organics & Oils*',
+      'Store: opp. Style union, Acharya Ranga Nagar, Vijayawada',
       `Name: ${name}`,
       `Area / Apartment (Vijayawada): ${customerArea}`,
       customerPhone ? `Phone: ${customerPhone}` : null,

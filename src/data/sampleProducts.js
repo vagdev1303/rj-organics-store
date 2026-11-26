@@ -185,7 +185,7 @@ export const SAMPLE_PRODUCTS = [
     variant: '6-Book Bundle',
     price_inr: 330,
     tag: 'School Ready',
-    description: '172-page bright white paper books—quick pickup right opp. Bhashyam School.',
+    description: '172-page bright white paper books—quick pickup right opp. Style union.',
     in_stock: true,
   },
   {

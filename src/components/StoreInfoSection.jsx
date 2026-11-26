@@ -1,7 +1,7 @@
 import { Clock, ExternalLink, MapPin, MessageCircle, Phone } from 'lucide-react';
 
 const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Polyclinic+Rd+opp+Bhashyam+Public+School+Acharya+Ranga+Nagar+Vijayawada+Andhra+Pradesh+520010';
+  'https://www.google.com/maps/search/?api=1&query=RJ+Organics+and+Oils+Polyclinic+Rd+opp+Style+union+Acharya+Ranga+Nagar+Vijayawada+Andhra+Pradesh+520010';
 
 export function StoreInfoSection() {
   return (
@@ -13,7 +13,7 @@ export function StoreInfoSection() {
             RJ Organics and Oils — Vijayawada
           </h2>
           <p className="store-intro">
-            Drop by our Acharya Ranga Nagar outlet to taste freshly pressed oils, pick up stone-ground spices and dry fruits, or grab school stationery while dropping off kids at Bhashyam Public School.
+            Drop by our Vijayawada outlet opp. Style union to taste freshly pressed oils, pick up stone-ground spices and dry fruits, or grab everyday school stationery.
           </p>
 
           <dl className="store-info-list">
@@ -23,7 +23,7 @@ export function StoreInfoSection() {
                 <span>Store Address</span>
               </dt>
               <dd>
-                Polyclinic Rd, opp. Bhashyam Public School,
+                Polyclinic Rd, opp. Style union,
                 <br />
                 Acharya Ranga Nagar, Vijayawada,
                 <br />
@@ -87,11 +87,10 @@ export function StoreInfoSection() {
           </div>
           <h3>Easy Landmark Directions</h3>
           <p className="landmark-lead">
-            Located right on <strong>Polyclinic Road</strong>, directly opposite{' '}
-            <strong>Bhashyam Public School</strong> in Acharya Ranga Nagar, Vijayawada.
+            Located directly <strong>opp. Style union</strong> in Acharya Ranga Nagar, Vijayawada.
           </p>
           <ul className="landmark-bullets">
-            <li>Convenient two-wheeler &amp; car stopover on Polyclinic Rd</li>
+            <li>Convenient two-wheeler &amp; car stopover opp. Style union</li>
             <li>Same-day WhatsApp bag preparation for quick pickup</li>
             <li>Bulk 5L Cans &amp; 15L Tins available for home &amp; function orders</li>
           </ul>

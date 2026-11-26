@@ -110,7 +110,7 @@ export default function App() {
       <footer className="site-footer">
         <div className="container footer-inner">
           <p className="footer-brand">
-            <strong>RJ Organics and Oils</strong> · Polyclinic Rd, opp. Bhashyam Public School, Acharya Ranga Nagar, Vijayawada 520010
+            <strong>RJ Organics and Oils</strong> · Polyclinic Rd, opp. Style union, Acharya Ranga Nagar, Vijayawada 520010
           </p>
           <p className="footer-hours">Open Daily 10:00 AM – 9:30 PM · Call / WhatsApp: 091772 12103</p>
         </div>
